@@ -1,0 +1,95 @@
+{
+  "entities": {
+    "Analysis": {
+      "title": "Analysis",
+      "description": "Represents a repository analysis report.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who owns this analysis."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the repository."
+        },
+        "url": {
+          "type": "string",
+          "description": "The URL of the repository."
+        },
+        "stats": {
+          "type": "string",
+          "description": "Basic statistics of the repository."
+        },
+        "description": {
+          "type": "string",
+          "description": "Summary or description of the repository."
+        },
+        "language": {
+          "type": "string",
+          "description": "Primary language detected."
+        },
+        "color": {
+          "type": "string",
+          "description": "UI color associated with the analysis."
+        },
+        "roadmap": {
+          "type": "array",
+          "description": "Learning path steps."
+        },
+        "risks": {
+          "type": "string",
+          "description": "Potential technical debt or complexity risks."
+        },
+        "importantFiles": {
+          "type": "array",
+          "description": "Key files in the repository."
+        },
+        "status": {
+          "type": "string",
+          "description": "Current analysis phase (e.g. Fetching... Reading...)"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time the analysis was created."
+        }
+      },
+      "required": ["userId", "name", "url", "stats", "description", "language", "color", "createdAt"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Represents a user's profile information.",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "The user's full name."
+        },
+        "email": {
+          "type": "string",
+          "description": "The user's email address."
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "The user's profile picture URL."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time the profile was last updated."
+        }
+      }
+    }
+  },
+  "firestore": {
+    "/analyses/{analysisId}": {
+      "schema": "Analysis",
+      "description": "Stored repository analysis reports."
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile data."
+    }
+  }
+}
